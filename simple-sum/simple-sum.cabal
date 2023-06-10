@@ -1,0 +1,53 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           simple-sum
+version:        0.0.0.0
+synopsis:       simple-sum synopsis
+description:    simple-sum description
+category:       Data
+author:         Jason Shipman
+maintainer:     Jason Shipman
+copyright:      2023-present (c) Jason Shipman
+build-type:     Simple
+extra-source-files:
+    package.yaml
+    README.md
+    LICENSE.md
+
+library
+  exposed-modules:
+      SSum
+      SSum.Internal
+  other-modules:
+      Paths_simple_sum
+  hs-source-dirs:
+      library
+  default-extensions:
+      NoImplicitPrelude
+  ghc-options: -Wall -fwarn-tabs -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base
+  default-language: Haskell2010
+
+test-suite simple-sum-test-suite
+  type: exitcode-stdio-1.0
+  main-is: Driver.hs
+  other-modules:
+      SSumSpec
+      Paths_simple_sum
+  hs-source-dirs:
+      test-suite
+  default-extensions:
+      NoImplicitPrelude
+  ghc-options: -Wall -fwarn-tabs -Wincomplete-uni-patterns -Wredundant-constraints
+  build-tool-depends:
+      hspec-discover:hspec-discover
+  build-depends:
+      base
+    , hspec
+    , simple-sum
+  default-language: Haskell2010

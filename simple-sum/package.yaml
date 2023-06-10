@@ -1,0 +1,38 @@
+name: simple-sum
+version: '0.0.0.0'
+copyright: 2023-present (c) Jason Shipman
+author: "Jason Shipman"
+maintainer: "Jason Shipman"
+synopsis: simple-sum synopsis
+description: simple-sum description
+category: Data
+
+extra-source-files:
+- package.yaml
+- README.md
+- LICENSE.md
+
+default-extensions:
+- NoImplicitPrelude
+
+ghc-options:
+  - -Wall
+  - -fwarn-tabs
+  - -Wincomplete-uni-patterns
+  - -Wredundant-constraints
+
+library:
+  dependencies:
+  - base
+  source-dirs: library
+
+tests:
+  simple-sum-test-suite:
+    source-dirs: test-suite
+    main: Driver.hs
+    build-tools:
+    - hspec-discover
+    dependencies:
+    - base
+    - hspec
+    - simple-sum
