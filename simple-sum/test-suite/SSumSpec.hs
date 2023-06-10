@@ -8,8 +8,9 @@ module SSumSpec
 import Data.Data (Proxy(Proxy))
 import Data.Foldable (Foldable(fold), asum)
 import Data.Functor.Const (Const(Const))
+import Data.Void (absurd)
 import Prelude
-import SSum (SSum, build, match)
+import SSum (SSum, build, ematch, match)
 import Test.Hspec (Spec, describe, it, shouldBe)
 import qualified SSum.Internal as Internal
 
@@ -54,6 +55,22 @@ spec = do
               , match @Char ssum >>= \c ->
                   Just [c]
               ]
+      matcher (build @Int 42) `shouldBe` "42"
+      matcher (build @String "abc") `shouldBe` "abc"
+      matcher (build @Char 'a') `shouldBe` "a"
+
+  describe "ematch" do
+    it "case approximation" do
+      let matcher :: SSum '[Int, String, Char] -> String
+          matcher ssum =
+            ematch ssum
+              ( \x -> show x
+              , ( \s -> s
+                , ( \c -> [c]
+                  , absurd
+                  )
+                )
+              )
       matcher (build @Int 42) `shouldBe` "42"
       matcher (build @String "abc") `shouldBe` "abc"
       matcher (build @Char 'a') `shouldBe` "a"

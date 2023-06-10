@@ -1,7 +1,5 @@
 module SSum
-  ( Internal.SSum
-  , Internal.build
-  , Internal.match
+  ( module SSum.Internal
   ) where
 
-import qualified SSum.Internal as Internal
+import SSum.Internal (SSum, build, match, ematch, Matchers)
