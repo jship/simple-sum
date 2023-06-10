@@ -44,8 +44,8 @@ instance MatchSSum a (a ': as) where
 instance {-# OVERLAPPABLE #-} (MatchSSum a as) => MatchSSum a (a' ': as) where
   match' _proxy1 proxy2 = either (const Nothing) (match' (Proxy @as) proxy2)
 
-ematch :: forall r as. (EMatchSSum r as) => SSum as -> Matchers r as -> r
-ematch (SSum rep) matchers = ematch' (Proxy @as) (Proxy @r) matchers rep
+ematch :: forall r as. (EMatchSSum r as) => (SSum as, Matchers r as) -> r
+ematch (SSum rep, matchers) = ematch' (Proxy @as) (Proxy @r) matchers rep
 
 type EMatchSSum :: Type -> [Type] -> Constraint
 class EMatchSSum r as where
@@ -64,3 +64,7 @@ type family Matchers (r :: Type) (as :: [Type]) :: Type where
 type family SSumRep (as :: [Type]) :: Type where
   SSumRep '[] = Void
   SSumRep (a ': as) = Either a (SSumRep as)
+
+(/\) :: a -> b -> (a, b)
+(/\) = (,)
+infixr /\
