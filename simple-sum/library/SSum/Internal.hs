@@ -7,6 +7,11 @@ import Data.Void (Void)
 import GHC.TypeLits (ErrorMessage(Text), TypeError)
 import Prelude
 
+type family (+) (a :: Type) (as :: Type) :: Type where
+  (+) a (SSum as) = SSum (a ': as)
+  (+) a b = SSum '[a, b]
+infixr +
+
 type SSum :: [Type] -> Type
 newtype SSum as = SSum { unSSum :: SSumRep as }
 deriving newtype instance (Eq (SSumRep as)) => Eq (SSum as)

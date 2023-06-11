@@ -1,6 +1,7 @@
 {-# LANGUAGE BlockArguments #-}
-{-# LANGUAGE GHC2021 #-}
 {-# LANGUAGE DataKinds #-}
+{-# LANGUAGE ExplicitNamespaces #-}
+{-# LANGUAGE GHC2021 #-}
 module SSumSpec
   ( spec
   ) where
@@ -10,7 +11,7 @@ import Data.Foldable (Foldable(fold), asum)
 import Data.Functor.Const (Const(Const))
 import Data.Void (absurd)
 import Prelude
-import SSum ((/\), SSum, build, ematch, match)
+import SSum (type (+), (/\), SSum, build, ematch, match)
 import Test.Hspec (Spec, describe, it, shouldBe)
 import qualified SSum.Internal as Internal
 
@@ -61,7 +62,7 @@ spec = do
 
   describe "ematch" do
     it "case approximation" do
-      let matcher :: SSum '[Int, String, Char] -> String
+      let matcher :: Int + String + Char -> String
           matcher ssum =
             ematch $ ssum
               /\ do
