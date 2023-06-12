@@ -22,4 +22,4 @@ from:
 [simple-sum]: https://github.com/jship/simple-sum
 [Build badge]: https://github.com/jship/simple-sum/workflows/CI/badge.svg
 [build]: https://github.com/jship/simple-sum/actions
-[blog post]: https://jship.github.io/posts/2023-06-13-anonymous-sums-in-25-lines-of-haskell/
+[blog post]: https://jship.github.io/posts/2023-06-11-anonymous-sums-from-scratch/
