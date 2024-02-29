@@ -1,7 +1,5 @@
 # [simple-sum][]
 
-[![Build badge][]][build]
-
 ## Synopsis
 
 `simple-sum` is a companion package to a [blog post][] on defining anonymous
@@ -20,6 +18,4 @@ from:
 * ... and many more ...
 
 [simple-sum]: https://github.com/jship/simple-sum
-[Build badge]: https://github.com/jship/simple-sum/workflows/CI/badge.svg
-[build]: https://github.com/jship/simple-sum/actions
 [blog post]: https://jship.github.io/posts/2023-06-11-anonymous-sums-from-scratch/
