@@ -1,3 +1,0 @@
-resolver: lts-20.24
-packages:
-- ../simple-sum

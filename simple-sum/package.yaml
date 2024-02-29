@@ -10,7 +10,7 @@ category: Data
 extra-source-files:
 - package.yaml
 - README.md
-- LICENSE.md
+- LICENSE.txt
 
 default-extensions:
 - NoImplicitPrelude
